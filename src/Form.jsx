@@ -1,3 +1,5 @@
+import Input from './Input';
+
 function Form({ inputs, handleRemove }) {
 	return (
 		<form
@@ -8,19 +10,11 @@ function Form({ inputs, handleRemove }) {
 		>
 			<h2 id='form-title'>new form</h2>
 			{inputs.map(input => (
-				<>
-					<input
-						type={input.type}
-						label={input.label}
-						key={input.id}
-					></input>
-					<button
-						key={'button' + input.id}
-						onClick={() => handleRemove(input)}
-					>
-						X
-					</button>
-				</>
+				<Input
+					input={input}
+					key={input.id}
+					handleRemove={handleRemove}
+				/>
 			))}
 		</form>
 	);

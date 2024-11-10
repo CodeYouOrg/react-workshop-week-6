@@ -5,7 +5,9 @@ function CreateInput({ onSave, id }) {
 		id,
 		type: 'text',
 		label: '',
+		options: '',
 	});
+	const [showOptions, setShowOptions] = useState(false);
 
 	const handleChange = (name, value) => {
 		setValues({ ...values, [name]: value });
@@ -20,11 +22,25 @@ function CreateInput({ onSave, id }) {
 			}}
 		>
 			<h2 id='form-title'>new input</h2>
+			<label>Label</label>
+			<input
+				className='spacing'
+				name='label'
+				onInput={e => handleChange(e.target.name, e.target.value)}
+				type='text'
+				value={values.label}
+			/>
+			<label>Type</label>
 			<select
+				className='spacing'
 				autoFocus
 				name='type'
-				label='Type'
-				onChange={e => handleChange(e.target.name, e.target.value)}
+				onChange={e => {
+					handleChange(e.target.name, e.target.value);
+					if (e.target.value == 'select' || e.target.value == 'radio')
+						setShowOptions(true);
+					else setShowOptions(false);
+				}}
 				value={values.type}
 			>
 				<option value={'text'}>text</option>
@@ -34,14 +50,23 @@ function CreateInput({ onSave, id }) {
 				<option value={'tel'}>phone number</option>
 				<option value={'radio'}>radio</option>
 				<option value={'checkbox'}>checkbox</option>
+				<option value={'select'}>select</option>
 			</select>
-			<input
-				label='Label'
-				name='label'
-				onInput={e => handleChange(e.target.name, e.target.value)}
-				type='text'
-				value={values.label}
-			/>
+			{showOptions && (
+				<>
+					<label>Options</label>
+					<input
+						className='spacing'
+						name='options'
+						placeholder='Enter options separated by ;'
+						onInput={e =>
+							handleChange(e.target.name, e.target.value)
+						}
+						type='text'
+						value={values.options}
+					/>
+				</>
+			)}
 			<button type='submit'>create</button>
 		</form>
 	);

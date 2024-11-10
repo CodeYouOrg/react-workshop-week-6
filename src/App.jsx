@@ -19,16 +19,18 @@ function App() {
 
 	return (
 		<main>
-			<button onClick={() => setAdding(true)}>add input</button>
-			{adding && (
-				<CreateInput
-					id={id}
-					onSave={input => {
-						handleAdd(input);
-						setAdding(false);
-					}}
-				/>
-			)}
+			<div>
+				<button onClick={() => setAdding(true)}>add input</button>
+				{adding && (
+					<CreateInput
+						id={id}
+						onSave={input => {
+							handleAdd(input);
+							setAdding(false);
+						}}
+					/>
+				)}
+			</div>
 			<Form inputs={inputs} handleRemove={handleRemove} />
 		</main>
 	);
