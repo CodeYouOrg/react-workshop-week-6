@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Form from './Form';
 import CreateInput from './CreateInput';
-import './App.css';
+import './app.css';
 
 function App() {
 	const [adding, setAdding] = useState(false);
@@ -22,13 +22,18 @@ function App() {
 			<div>
 				<button onClick={() => setAdding(true)}>add input</button>
 				{adding && (
-					<CreateInput
-						id={id}
-						onSave={input => {
-							handleAdd(input);
-							setAdding(false);
-						}}
-					/>
+					<>
+						<CreateInput
+							id={id}
+							onSave={input => {
+								handleAdd(input);
+								setAdding(false);
+							}}
+							onCancel={() => {
+								setAdding(false);
+							}}
+						/>
+					</>
 				)}
 			</div>
 			<Form inputs={inputs} handleRemove={handleRemove} />

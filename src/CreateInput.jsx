@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function CreateInput({ onSave, id }) {
+function CreateInput({ onSave, id, onCancel }) {
 	const [values, setValues] = useState({
 		id,
 		type: 'text',
@@ -68,6 +68,7 @@ function CreateInput({ onSave, id }) {
 				</>
 			)}
 			<button type='submit'>create</button>
+			<button onClick={onCancel}>cancel</button>
 		</form>
 	);
 }
