@@ -43,3 +43,8 @@ form button {
 .spacing {
 	margin-bottom: 20px;
 }
+
+.error {
+	color: red;
+	margin: 0;
+}

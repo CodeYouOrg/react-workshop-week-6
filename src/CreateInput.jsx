@@ -51,6 +51,7 @@ function CreateInput({ onSave, id, onCancel }) {
 				<option value={'radio'}>radio</option>
 				<option value={'checkbox'}>checkbox</option>
 				<option value={'select'}>select</option>
+				<option value={'file'}>image</option>
 			</select>
 			{showOptions && (
 				<>
